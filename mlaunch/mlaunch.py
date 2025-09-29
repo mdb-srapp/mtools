@@ -1788,6 +1788,15 @@ class MLaunchTool(BaseCmdLineTool):
                     # create sub process on windows doesn't wait for output,
                     # wait a few seconds for mongod instance up
                     time.sleep(5)
+                elif sys.platform == 'darwin':
+                    proc = subprocess.Popen(command_str, shell=True,
+                                           stdout=subprocess.DEVNULL,
+                                           stderr=subprocess.STDOUT,
+                                           preexec_fn=os.setpgrp)
+                    time.sleep(0.5)
+                    returncode = proc.poll()
+                    if returncode is not None and returncode != 0:
+                        raise SystemExit(f"Process failed to start, return code {returncode}. Tried to launch: {command_str}")
                 else:
                     subprocess.check_output([command_str], shell=True,
                                             stderr=subprocess.STDOUT)
@@ -2135,6 +2144,12 @@ class MLaunchTool(BaseCmdLineTool):
                            "%s %s" % (os.path.join(path, 'mongod.exe'),
                                       rs_param, newdbpath, newlogpath, port,
                                       auth_param, extra))
+        elif sys.platform == 'darwin':
+            command_str = ("\"%s\" %s --dbpath \"%s\" --logpath \"%s\" "
+                           "--port %i"
+                           "%s %s" % (os.path.join(path, 'mongod'), rs_param,
+                                      dbpath, logpath, port, auth_param,
+                                      extra))
         else:
             command_str = ("\"%s\" %s --dbpath \"%s\" --logpath \"%s\" "
                            "--port %i --fork "
@@ -2170,6 +2185,10 @@ class MLaunchTool(BaseCmdLineTool):
                            "%s %s " % (os.path.join(path, 'mongos'),
                                        newlogpath, port, configdb,
                                        auth_param, extra))
+        elif sys.platform == 'darwin':
+            command_str = ("%s --logpath \"%s\" --port %i --configdb %s %s %s "
+                           % (os.path.join(path, 'mongos'), logpath,
+                                       port, configdb, auth_param, extra))
         else:
             command_str = ("%s --logpath \"%s\" --port %i --configdb %s %s %s "
                            "--fork" % (os.path.join(path, 'mongos'), logpath,

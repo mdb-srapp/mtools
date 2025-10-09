@@ -17,10 +17,10 @@ from collections import defaultdict
 from operator import itemgetter
 
 import psutil
-from mtools.util import OrderedDict
-from mtools.util.cmdlinetool import BaseCmdLineTool
-from mtools.util.print_table import print_table
-from mtools.version import __version__
+from util import OrderedDict
+from util.cmdlinetool import BaseCmdLineTool
+from util.print_table import print_table
+from util.version import __version__
 
 try:
     import Queue

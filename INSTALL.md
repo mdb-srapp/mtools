@@ -1,4 +1,4 @@
-Installation Instructions for mtools
+Installation Instructions for mlaunch
 ====================================
 
 ### Python
@@ -8,7 +8,7 @@ Older versions of Python are not supported.
 
 To check your Python version, run `python --version` on the command line.
 
-### mtools Installation
+### mlaunch Installation
 
 #### Installation with `pip3`
 
@@ -87,19 +87,6 @@ mlaunch uses `psutil` to manage starting, stopping, and finding MongoDB processe
 *required for mlaunch*
 
 pymongo is MongoDB's official Python driver. `mlaunch` uses this to configure and query local MongoDB deployments.
-
-#### Matplotlib
-
-*required for mplotqueries*
-
-[matplotlib](http://matplotlib.org/) is a python 2D plotting library which produces
-figures and graphs in a variety of formats and interactive environments across platforms.
-
-#### NumPy
-
-*required for matplotlib (in mplotqueries)*
-
-[NumPy](http://numpy.scipy.org/) is a Python module for scientific computing and numerical calculations.
 
 ### All requirements
 

@@ -14,7 +14,7 @@ To check your Python version, run `python --version` on the command line.
 
 The easiest way to install mtools is via `pip3`. From the command line, run:
 
-    pip3 install mtools
+    pip3 install mlaunch
 
 You need to have `pip3` installed for this to work. `pip3` should be included
 as part of the default install for supported versions of Python 3.
@@ -26,21 +26,21 @@ In that case, you either need to add `sudo` in front of the `pip3` command to
 install into a system directory, or append `--user` to install into your home
 directory.
 
-Note that some mtools scripts have [additional dependencies](https://github.com/rueckstiess/mtools/blob/master/INSTALL.md#additional-dependencies) as listed below.
+Note that some mtools scripts have [additional dependencies](https://github.com/mongodb/mlaunch/blob/master/INSTALL.md#additional-dependencies) as listed below.
 
 #### Installation from source
 
 If `pip3` is not available and you want to install mtools from source, you can
 get the source code by cloning the
-[mtools github repository](https://github.com/rueckstiess/mtools):
+[mlaunch github repository](https://github.com/mongodb/mlaunch):
 
     git clone git://github.com/rueckstiess/mtools.git
 
-Or download the tarball from <https://pypi.python.org/pypi/mtools> and extract it with:
+Or download the tarball from <https://pypi.python.org/pypi/mlaunch> and extract it with:
 
     tar xzvf mtools-<version>.tar.gz
 
-Then `cd` into the mtools directory and run:
+Then `cd` into the mlaunch directory and run:
 
     sudo python setup.py install
 
@@ -64,7 +64,7 @@ you should install mtools from a source checkout in "Development Mode" using eit
     sudo python3 setup.py develop
 ```
 
-More information about switching to Development Mode can be found on the page [mtools Development Mode](https://github.com/rueckstiess/mtools/wiki/Development-Mode-for-mtools).
+More information about switching to Development Mode can be found on the page [mtools Development Mode](https://mongodb.github.com/mlaunch/Development-Mode-for-mtools).
 
 ### Additional dependencies
 

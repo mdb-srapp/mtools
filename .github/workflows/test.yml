@@ -8,8 +8,8 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.7", "3.8", "3.9", "3.10"]
-        pymongo-version: ["4.0", "4.2"]
-        mongodb-version: ["4.4"]
+        pymongo-version: ["4.0", "4.2", "4.15"]
+        mongodb-version: ["7.0", "8.0", "8.2"]
       fail-fast: false
 
     steps:

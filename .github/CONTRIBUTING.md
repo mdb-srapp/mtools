@@ -1,4 +1,4 @@
-Contributions to mtools are very welcome. Please check if the particular bug / issue has already been reported on the [mtools issues](https://github.com/rueckstiess/mtools/issues?state=open) page and create a new issue if it doesn't exist yet.
+Contributions to mlaunch are very welcome. Please check if the particular bug / issue has already been reported on the [mtools issues](https://github.com/mongodb/mlaunch/issues?state=open) page and create a new issue if it doesn't exist yet.
 
 ### Development Installation
 
@@ -7,11 +7,11 @@ You can install mtools in "development" mode, which will not move it into the Py
 Clone the repository
 
     cd /your/code/path
-    git clone https://github.com/rueckstiess/mtools
+    git clone https://github.com/mongodb/mlaunch
 
 Then change into the directory and install in "development" mode
 
-	cd mtools
+	cd mlaunch
 	sudo python setup.py develop
 
 No changes to your `$PATH` and `$PYTHONPATH` environment variables are needed.
@@ -21,20 +21,20 @@ No changes to your `$PATH` and `$PYTHONPATH` environment variables are needed.
 
 mtools uses a simplified version of [this git branching model](http://nvie.com/posts/a-successful-git-branching-model/) by [@nvie](https://twitter.com/nvie).
 
-The [master branch](https://github.com/rueckstiess/mtools) should only ever contain versioned releases. **Do not send pull requests against the master branch.**
+The [main branch](https://github.com/mongodb/mlaunch) should only ever contain versioned releases. **Do not send pull requests against the master branch.**
 
-Development happens on the [develop branch](https://github.com/rueckstiess/mtools/tree/develop). 
+Development happens on the [develop branch](https://github.com/mongodb/mlaunch/tree/develop). 
 
-First, fork the [main repository](https://github.com/rueckstiess/mtools) into your own github account (&lt;username&gt;). 
+First, fork the [main repository](https://github.com/mongodb/mlaunch) into your own github account (&lt;username&gt;). 
 
 Then clone a copy to your local machine:
 
-    git clone https://github.com/<username>/mtools
+    git clone https://github.com/<username>/mlaunch
 
 Now you need to add the upstream repository to pull in the latest changes:
 
-    cd mtools
-    git remote add upstream https://github.com/rueckstiess/mtools
+    cd mlaunch
+    git remote add upstream https://github.com/mongodb/mlaunch
     git fetch upstream
 
 To get a local `develop` branch you need to check out and track your remote `develop` branch:
@@ -83,7 +83,7 @@ GitHub milestones and git tags are named with a prefix `v`, for example `v1.0.1`
 ### Releasing a new version
 
 1. Create a release branch, named `release-x.y.z` where `x.y.z` is the version to be released.
-2. Increase the version in `./mtools/version.py` from `x.y.z-dev` to `x.y.z`.
+2. Increase the version in `./mlaunch/version.py` from `x.y.z-dev` to `x.y.z`.
 3. Run tests via `pytest` and make sure they pass
 4. Update README.md and CHANGES.md accordingly
 5. Any other cleanup tasks
@@ -92,11 +92,11 @@ GitHub milestones and git tags are named with a prefix `v`, for example `v1.0.1`
 8. Merge the release branch into `master`
 9. Merge the release branch into `develop`
 10. Delete the `release-x.y.z` branch
-11. Bump the version on the develop branch (in `./mtools/version.py`) to `x.y.(z+1)-dev`.
+11. Bump the version on the develop branch (in `./mlaunch/version.py`) to `x.y.(z+1)-dev`.
 
 ### Testing
 
-mtools uses the [pytest testing framework](https://pytest.org). You can install it with `sudo pip install pytest` or you can just run the test suite, which will take care of all the testing dependencies:
+mlaunch uses the [pytest testing framework](https://pytest.org). You can install it with `sudo pip install pytest` or you can just run the test suite, which will take care of all the testing dependencies:
 
     python setup.py test
 

@@ -12,7 +12,7 @@ import pytest
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
 
-from mtools.mlaunch.mlaunch import MLaunchTool
+from mlaunch.mlaunch import MLaunchTool
 
 pytestmark = pytest.mark.skip("skip all mlaunch tests for now")
 

@@ -6,14 +6,15 @@ mlaunch
 
 ``mlaunch``, is a utility to quickly set up complex MongoDB test environments 
 on a local machine, including replica sets and sharded clusters. It was 
-originally part of the now deprecated `mtools` collection; however, is now 
-available as a standalone tool.
+originally part of the now deprecated `mtools 
+<https://github.com/rueckstiess/mtools>` collection; however, is now available
+as a standalone tool.
 
-.. figure:: https://raw.githubusercontent.com/rueckstiess/mtools/develop/mtools.png
+.. figure:: https://raw.githubusercontent.com/mongodb/mlaunch/develop/mlaunch.png
    :alt: mtools box
 
 For more information, see the `mlaunch documentation
-<https://rueckstiess.github.io/mtools>`__.
+<https://mongodb.github.io/mtools>`__.
 
 Requirements and Installation Instructions
 ------------------------------------------
@@ -22,7 +23,7 @@ Requirements and Installation Instructions
 3.9, 3.10, and 3.11.
 
 mlaunch requires `pymongo`, `psutil` and `packaging` dependencies. See the 
-`installation instructions <https://rueckstiess.github.io/mtools/install.html>`__
+`installation instructions <https://mongodb.github.io/mlaunch/install.html>`__
 for more information.
 
 mlaunch is only tested with
@@ -33,14 +34,14 @@ that includes MongoDB 7.0 or newer.
 Recent Changes
 --------------
 
-See `the changelog <https://rueckstiess.github.io/mtools/changelog.html>`__
+See `the changelog <https://mongodb.github.io/mlaucnh/changelog.html>`__
 for a list of changes from previous versions of mlaunch/mtools.
 
 Contribute to mlaunch
 --------------------
 
 If you'd like to contribute to mtools, please read the `contributor page
-<https://rueckstiess.github.io/mtools/contributing.html>`__ for instructions.
+<https://mongodb.github.io/mlaunch/contributing.html>`__ for instructions.
 
 Disclaimer
 ----------

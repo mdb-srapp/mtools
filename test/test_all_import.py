@@ -1,27 +1,13 @@
 from functools import wraps
 
-# tools without any external dependencies
-from mtools.mlogfilter.mlogfilter import MLogFilterTool
-from mtools.mloginfo.mloginfo import MLogInfoTool
-
-tools = [MLogFilterTool, MLogInfoTool]
-
+tools = []
 
 # mlaunch depends on pymongo
 try:
-    from mtools.mlaunch.mlaunch import MLaunchTool
+    from mlaunch.mlaunch import MLaunchTool
     tools.append(MLaunchTool)
 except ImportError:
     pass
-
-
-# mplotqueries depends on matplotlib
-try:
-    from mtools.mplotqueries.mplotqueries import MPlotQueriesTool
-    tools.append(MPlotQueriesTool)
-except ImportError:
-    pass
-
 
 def all_tools(fn):
     """

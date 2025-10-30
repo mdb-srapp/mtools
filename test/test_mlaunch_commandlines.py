@@ -2,12 +2,12 @@ import inspect
 import json
 import os
 import shutil
+import sys
 from packaging import version
 
 import pytest
 
-from mtools.mlaunch.mlaunch import MLaunchTool
-
+from mlaunch.mlaunch import MLaunchTool
 
 class TestMLaunch(object):
 
@@ -102,17 +102,23 @@ class TestMLaunch(object):
         """mlaunch should start 1 node."""
         self.run_tool('init --single')
         cmdlist = [
-            set(['"mongod"', '--dbpath', '--logpath', '--port', '--fork'])
+            set(['"mongod"', '--dbpath', '--logpath', '--port'])
             ]
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_single_storage(self):
         """mlaunch should start 1 node with specified storage."""
         self.run_tool('init --single --storageEngine wiredTiger')
         cmdlist = [
-            set(['"mongod"', '--dbpath', '--logpath', '--port', '--fork',
+            set(['"mongod"', '--dbpath', '--logpath', '--port',
                  '--storageEngine'])
             ]
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_replicaset_3(self):
@@ -120,8 +126,11 @@ class TestMLaunch(object):
         self.run_tool('init --replicaset')
         cmdlist = (
             [set(['"mongod"', '--replSet', '--dbpath', '--logpath', '--port',
-                  '--fork'])] * 3
+                  ])] * 3
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_replicaset_7(self):
@@ -129,8 +138,11 @@ class TestMLaunch(object):
         self.run_tool('init --replicaset --nodes 7')
         cmdlist = (
             [set(['"mongod"', '--replSet', '--dbpath', '--logpath', '--port',
-                  '--fork'])] * 7
+                  ])] * 7
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_replicaset_6_1(self):
@@ -138,8 +150,11 @@ class TestMLaunch(object):
         self.run_tool('init --replicaset --nodes 6 --arbiter')
         cmdlist = (
             [set(['"mongod"', '--replSet', '--dbpath', '--logpath', '--port',
-                  '--fork'])] * 7
+                  ])] * 7
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_sharded_replicaset_csrs_1(self):
@@ -150,11 +165,14 @@ class TestMLaunch(object):
         self.run_tool('init --sharded 2 --replicaset --config 1 --csrs')
         cmdlist = (
             [set(['"mongod"', '--replSet', '--dbpath', '--logpath', '--port',
-                  '--fork', '--configsvr'])] +
+                  '--configsvr'])] +
             [set(['"mongod"', '--replSet', '--dbpath', '--logpath', '--port',
-                  '--fork', '--shardsvr'])] * 6 +
-            [set(['"mongos"', '--logpath', '--port', '--configdb', '--fork'])]
+                  '--shardsvr'])] * 6 +
+            [set(['"mongos"', '--logpath', '--port', '--configdb'])]
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_sharded_replicaset_csrs_2(self):
@@ -165,11 +183,14 @@ class TestMLaunch(object):
         self.run_tool('init --sharded 2 --replicaset --config 2 --csrs')
         cmdlist = (
             [set(['"mongod"', '--replSet', '--dbpath', '--logpath', '--port',
-                  '--fork', '--configsvr'])] * 2 +
+                  '--configsvr'])] * 2 +
             [set(['"mongod"', '--replSet', '--dbpath', '--logpath', '--port',
-                  '--fork', '--shardsvr'])] * 6 +
-            [set(['"mongos"', '--logpath', '--port', '--configdb', '--fork'])]
+                  '--shardsvr'])] * 6 +
+            [set(['"mongos"', '--logpath', '--port', '--configdb'])]
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_sharded_replicaset_csrs_3(self):
@@ -180,11 +201,14 @@ class TestMLaunch(object):
         self.run_tool('init --sharded 2 --replicaset --config 3 --csrs')
         cmdlist = (
             [set(['"mongod"', '--replSet', '--dbpath', '--logpath', '--port',
-                  '--fork', '--configsvr'])] * 3 +
+                  '--configsvr'])] * 3 +
             [set(['"mongod"', '--replSet', '--dbpath', '--logpath', '--port',
-                  '--fork', '--shardsvr'])] * 6 +
-            [set(['"mongos"', '--logpath', '--port', '--configdb', '--fork'])]
+                  '--shardsvr'])] * 6 +
+            [set(['"mongos"', '--logpath', '--port', '--configdb'])]
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_sharded_replicaset_csrs_4(self):
@@ -195,11 +219,14 @@ class TestMLaunch(object):
         self.run_tool('init --sharded 2 --replicaset --config 4 --csrs')
         cmdlist = (
             [set(['"mongod"', '--replSet', '--dbpath', '--logpath', '--port',
-                  '--fork', '--configsvr'])] * 4 +
+                  '--configsvr'])] * 4 +
             [set(['"mongod"', '--replSet', '--dbpath', '--logpath', '--port',
-                  '--fork', '--shardsvr'])] * 6 +
-            [set(['"mongos"', '--logpath', '--port', '--configdb', '--fork'])]
+                  '--shardsvr'])] * 6 +
+            [set(['"mongos"', '--logpath', '--port', '--configdb'])]
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_sharded_oplogsize_csrs(self):
@@ -208,11 +235,14 @@ class TestMLaunch(object):
                       '--oplogSize 19 --csrs')
         cmdlist = (
             [set(['"mongod"', '--port', '--logpath', '--dbpath', '--configsvr',
-                  '--fork', '--replSet'])] +
+                  '--replSet'])] +
             [set(['"mongod"', '--port', '--replSet', '--shardsvr', '--logpath',
-                  '--dbpath', '--oplogSize', '--fork'])] +
-            [set(['"mongos"', '--port', '--logpath', '--configdb', '--fork'])]
+                  '--dbpath', '--oplogSize'])] +
+            [set(['"mongos"', '--port', '--logpath', '--configdb'])]
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_sharded_three_mongos_csrs(self):
@@ -221,12 +251,14 @@ class TestMLaunch(object):
                       '--mongos 3 --csrs')
         cmdlist = (
             [set(['"mongod"', '--port', '--logpath', '--dbpath', '--configsvr',
-                  '--fork', '--replSet'])] * 3 +
+                  '--replSet'])] * 3 +
             [set(['"mongod"', '--port', '--shardsvr', '--logpath', '--dbpath',
-                  '--fork', '--replSet'])] * 6 +
-            [set(['"mongos"', '--port', '--logpath', '--configdb',
-                  '--fork'])] * 3
+                  '--replSet'])] * 6 +
+            [set(['"mongos"', '--port', '--logpath', '--configdb'])] * 3
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_default_replicaset_csrs(self):
@@ -236,11 +268,14 @@ class TestMLaunch(object):
         self.run_tool('init --sharded 2 --replicaset')
         cmdlist = (
             [set(['"mongod"', '--port', '--logpath', '--dbpath', '--configsvr',
-                  '--fork', '--replSet'])] +
+                  '--replSet'])] +
             [set(['"mongod"', '--port', '--logpath', '--dbpath', '--shardsvr',
-                  '--fork', '--replSet'])] * 6 +
-            [set(['"mongos"', '--port', '--logpath', '--configdb', '--fork'])]
+                  '--replSet'])] * 6 +
+            [set(['"mongos"', '--port', '--logpath', '--configdb'])]
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_default_7_replicaset_csrs(self):
@@ -250,11 +285,14 @@ class TestMLaunch(object):
         self.run_tool('init --sharded 2 --replicaset --nodes 7')
         cmdlist = (
             [set(['"mongod"', '--port', '--logpath', '--dbpath', '--configsvr',
-                  '--fork', '--replSet'])] +
+                  '--replSet'])] +
             [set(['"mongod"', '--port', '--logpath', '--dbpath', '--shardsvr',
-                  '--fork', '--replSet'])] * 14 +
-            [set(['"mongos"', '--port', '--logpath', '--configdb', '--fork'])]
+                  '--replSet'])] * 14 +
+            [set(['"mongos"', '--port', '--logpath', '--configdb'])]
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_default_7_replicaset_5_config_csrs(self):
@@ -265,11 +303,14 @@ class TestMLaunch(object):
         self.run_tool('init --sharded 2 --replicaset --nodes 7 --config 5')
         cmdlist = (
             [set(['"mongod"', '--port', '--logpath', '--dbpath', '--configsvr',
-                  '--fork', '--replSet'])] * 5 +
+                  '--replSet'])] * 5 +
             [set(['"mongod"', '--port', '--logpath', '--dbpath', '--shardsvr',
-                  '--fork', '--replSet'])] * 14 +
-            [set(['"mongos"', '--port', '--logpath', '--configdb', '--fork'])]
+                  '--replSet'])] * 14 +
+            [set(['"mongos"', '--port', '--logpath', '--configdb'])]
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_default_2_replicaset_arb_4_config_2_mongos_csrs(self):
@@ -281,14 +322,16 @@ class TestMLaunch(object):
                       '--config 4 --mongos 2')
         cmdlist = (
             [set(['"mongod"', '--port', '--logpath', '--dbpath', '--configsvr',
-                  '--fork', '--replSet'])] * 4 +
+                  '--replSet'])] * 4 +
             [set(['"mongod"', '--port', '--logpath', '--dbpath', '--shardsvr',
-                  '--fork', '--replSet'])] * 4 +
-            [set(['"mongod"', '--port', '--logpath', '--dbpath', '--fork',
-                  '--replSet'])] * 2 +
-            [set(['"mongos"', '--port', '--logpath', '--configdb',
-                  '--fork'])] * 2
+                  '--replSet'])] * 4 +
+            [set(['"mongod"', '--port', '--logpath', '--dbpath', '--replSet'
+                  ])] * 2 +
+            [set(['"mongos"', '--port', '--logpath', '--configdb'])] * 2
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     def test_storageengine_csrs(self):
@@ -298,11 +341,14 @@ class TestMLaunch(object):
         self.run_tool('init --sharded 2 --replicaset --storageEngine wiredTiger')
         cmdlist = (
             [set(['"mongod"', '--port', '--logpath', '--dbpath', '--configsvr',
-                  '--fork', '--replSet'])] +
+                  '--replSet'])] +
             [set(['"mongod"', '--port', '--logpath', '--dbpath', '--shardsvr',
-                  '--fork', '--storageEngine'])] * 6 +
-            [set(['"mongos"', '--port', '--logpath', '--configdb', '--fork'])]
+                  '--storageEngine'])] * 6 +
+            [set(['"mongos"', '--port', '--logpath', '--configdb'])]
             )
+        if sys.platform == 'linux':
+            for c in cmdlist:
+                c.add('--fork ')
         self.cmdlist_assert(cmdlist)
 
     @pytest.mark.xfail(raises=SystemExit)

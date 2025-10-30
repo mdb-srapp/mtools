@@ -11,7 +11,7 @@ import sys
 
 #from dateutil.tz import tzutc
 
-from util.version import __version__
+from .version import __version__
 
 class BaseCmdLineTool(object):
     """

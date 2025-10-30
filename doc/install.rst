@@ -2,17 +2,16 @@
 Installation
 ============
 
-The mtools collection is written in Python, and most of the tools only use the
-standard packages shipped with Python. The tools are currently tested with
-Python 3.8, 3.9, 3.10, and 3.11.
+mlaunch is written in Python and it is currently tested with Python 3.8, 3.9, 
+3.10, and 3.11.
 
 Some of the tools have additional dependencies, which are listed under the
 specific tool's section.
 
-The mtools suite is only tested with
+mlaunch is only tested with
 `actively supported <https://www.mongodb.com/support-policy/lifecycles>`__
-(non End-of-Life) versions of the MongoDB server. As of September 2023,
-that includes MongoDB 4.4 or newer.
+(non End-of-Life) versions of the MongoDB server. As of November 2025,
+that includes MongoDB 7.0 or newer.
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -30,14 +29,7 @@ The easiest way to install mtools is via ``pip3``. From the command line, run:
 
 .. code-block:: bash
 
-   pip3 install mtools
-
-Some mtools scripts have additional `dependencies`_. To install all optional
-dependencies use:
-
-.. code-block:: bash
-
-   pip3 install 'mtools[all]'
+   pip3 install mlaunch
 
 You need to have Python 3.7 or newer installed. ``pip3`` should be included as
 part of the default install for supported versions of Python 3.
@@ -53,19 +45,19 @@ Installation from source
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 If ``pip3`` is not available and you want to install mtools from source, you can
-get the source code by cloning the `mtools github repository
-<https://github.com/rueckstiess/mtools>`__:
+get the source code by cloning the `mlaunch github repository
+<https://github.com/mongodb/mlaunch>`__:
 
 .. code-block:: bash
 
-   git clone git://github.com/rueckstiess/mtools.git
+   git clone git://github.com/mongodb/mlaunch.git
 
-Or download the tarball from `PyPI <https://pypi.python.org/pypi/mtools>`__ and
+Or download the tarball from `PyPI <https://pypi.python.org/pypi/mlaunch>`__ and
 extract it with:
 
 .. code-block:: bash
 
-   tar xzvf mtools-<version>.tar.gz
+   tar xzvf mlaunch-<version>.tar.gz
 
 Then ``cd`` into the mtools directory and run:
 
@@ -84,25 +76,10 @@ Dependencies
 
 The full list of requirements (some of which are already included in the Python
 standard library) can be found in the `requirements.txt
-<https://github.com/rueckstiess/mtools/blob/develop/requirements.txt>`__ file.
-
-To install all dependencies for full feature support, run:
-
-.. code-block:: bash
-
-   pip3 install 'mtools[all]'
-
-To install dependencies for a subset of mtools utilities, specify one or more
-script names as a comma-separated list:
-
-.. code-block:: bash
-
-   pip3 install 'mtools[mlaunch,mloginfo]'
+<https://github.com/mongodb/mlaunch/blob/develop/requirements.txt>`__ file.
 
 psutil
 ------
-
-*required for mlaunch*
 
 mlaunch uses ``psutil`` to manage starting, stopping, and finding MongoDB
 processes.
@@ -110,33 +87,6 @@ processes.
 pymongo
 -------
 
-*required for mlaunch and mtransfer*
-
 `pymongo <https://www.mongodb.com/docs/drivers/pymongo/#installation>`__
 is MongoDB's official Python driver. ``mlaunch`` uses this to configure
 and query local MongoDB deployments.
-
-matplotlib
-----------
-
-*required for mplotqueries*
-
-`matplotlib <https://matplotlib.org/>`__ is a python 2D plotting library which
-produces figures and graphs in a variety of formats and interactive
-environments across platforms.
-
-numpy
------
-
-*required for matplotlib (in mplotqueries)*
-
-`numpy <https://numpy.scipy.org/>`__ is a Python module for scientific
-computing and numerical calculations.
-
-wiredtiger
-----------
-
-*required for mtransfer*
-
-`WiredTiger <https://github.com/wiredtiger/wiredtiger/>`__ is the default
-storage engine for MongoDB.

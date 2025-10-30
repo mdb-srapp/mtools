@@ -1,4 +1,3 @@
 include *.md
-recursive-include tutorials *
-recursive-include mtools *.py
-recursive-include mtools/data *
+recursive-include mlaunch *.py
+recursive-include mlaunch/util *.py

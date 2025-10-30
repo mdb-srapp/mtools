@@ -4,7 +4,7 @@ import sys
 
 import pytest
 
-from mtools.test import all_tools
+from . import all_tools
 
 
 @pytest.fixture(scope="function", autouse=True)

@@ -17,10 +17,10 @@ from collections import defaultdict
 from operator import itemgetter
 
 import psutil
-from mtools.util import OrderedDict
-from mtools.util.cmdlinetool import BaseCmdLineTool
-from mtools.util.print_table import print_table
-from mtools.version import __version__
+from mlaunch.util import OrderedDict
+from mlaunch.util.cmdlinetool import BaseCmdLineTool
+from mlaunch.util.print_table import print_table
+from mlaunch.util.version import __version__
 
 try:
     import Queue
@@ -603,6 +603,9 @@ class MLaunchTool(BaseCmdLineTool):
         kill_parser.add_argument('--verbose', action='store_true',
                                  default=False,
                                  help='outputs more verbose information.')
+        if not arguments:
+            #if not any(args in arguments for args in ['--help', '-h']):
+            print("Detected mongod version: %s" % self.current_version)
 
         # argparser is set up, now call base class run()
         BaseCmdLineTool.run(self, arguments, get_unknowns=True)
@@ -924,7 +927,6 @@ class MLaunchTool(BaseCmdLineTool):
         except Exception:
             pass
 
-        print("Detected mongod version: %s" % current_version)
         return current_version
 
     def client(self, host_and_port, **kwargs):

@@ -1,15 +1,15 @@
-=================
+==================
 Changes to mlaunch
-=================
+==================
 
 version 1.8.0 - first release of mlaunch standalone
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Remove all tools except mlaunch from the mtools package
  * Rebrand to mlaunch
  * Add support for MongoDB 8.2 on MacOS
 
 version 1.7.2 - final release of mtools
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * mlaunch: mlaunch init --help should not require mongod (#894)
 
 version 1.7.1

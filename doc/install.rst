@@ -2,7 +2,7 @@
 Installation
 ============
 
-mlaunch is written in Python and it is currently tested with Python 3.8, 3.9, 
+mlaunch is written in Python and it is currently tested with Python 3.8, 3.9,
 3.10, and 3.11.
 
 Some of the tools have additional dependencies, which are listed under the

@@ -4,9 +4,9 @@ mtools
 
 |PyPI version| |Build Status| |Python 36| |Python 37| |Python 38|
 
-``mlaunch``, is a utility to quickly set up complex MongoDB test environments 
-on a local machine, including replica sets and sharded clusters. It was 
-originally part of the now deprecated `mtools 
+``mlaunch``, is a utility to quickly set up complex MongoDB test environments
+on a local machine, including replica sets and sharded clusters. It was
+originally part of the now deprecated `mtools
 <https://github.com/rueckstiess/mtools>` collection; however, is now available
 as a standalone tool.
 

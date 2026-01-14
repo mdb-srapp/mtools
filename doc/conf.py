@@ -20,10 +20,10 @@ except ImportError as e:
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('..'))
-sys.path.insert(0, os.path.abspath('../mtools/'))
+sys.path.insert(0, os.path.abspath('../mlaunch/'))
 
 try:
-    from utils import __version__
+    from util.version import __version__
 except ImportError as e:
     print('Cannot load version: %s' % e)
 
@@ -75,7 +75,7 @@ version = __version__
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = "en"
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -155,11 +155,9 @@ html_favicon = "_static/mlaunch.ico"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-html_context = {
-    'css_files': [
-        '_static/theme_overrides.css',  # overrides wide tables in RTD theme
-        ],
-    }
+html_css_files = [
+    '_static/theme_overrides.css',
+    ]
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied

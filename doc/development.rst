@@ -4,7 +4,7 @@
 Development
 ===========
 
-You can install mtools in development mode, which does not move it into the
+You can install mlaunch in development mode, which does not move it into the
 Python ``site-packages`` directory but keeps it in your local development
 directory instead. It still installs the necessary hooks so you can use it like
 normal, both from Python and the command line. In addition, you can modify the
@@ -13,33 +13,33 @@ files directly in your local directory and test the changes right away.
 Using a development branch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Remove any existing mtools installation:
+#. Remove any existing mlaunch installation:
 
    .. code-block:: bash
 
-      sudo pip3 uninstall mtools
+      sudo pip3 uninstall mlaunch
 
-#. `Fork the mtools repository <https://help.github.com/articles/fork-a-repo/>`__
+#. `Fork the mlaunch repository <https://help.github.com/articles/fork-a-repo/>`__
    to your own GitHub account.
 
-#. Clone your mtools fork to your development environment. This step creates
-   an mtools directory in the current directory, so you may want to switch
+#. Clone your mlaunch fork to your development environment. This step creates
+   an mlaunch directory in the current directory, so you may want to switch
    to an appropriate directory first (for example ``~/code/``):
 
    .. code-block:: bash
 
       cd ~/code
-      git clone https://github.com/<username>/mtools.git
+      git clone https://github.com/<username>/mlaunch.git
 
-#. Change into the mtools directory and check out the desired branch. All
+#. Change into the mlaunch directory and check out the desired branch. All
    development should be based off the ``develop`` branch:
 
    .. code-block:: bash
 
-      cd mtools
+      cd mlaunch
       git checkout develop
 
-#. Install the mtools scripts in development mode using either:
+#. Install the mlaunch scripts in development mode using either:
 
    *  ``pip3`` (recommended as a convenience for installing additional
       dependencies):
@@ -59,24 +59,24 @@ Using a development branch
 
    .. code-block:: bash
 
-      mlogf<tab>
+      mla<tab>
 
-   This should auto-complete to ``mlogfilter``. Also confirm the current
+   This should auto-complete to ``mlaunch``. Also confirm the current
    version, which should end in ``-dev0`` for the ``develop`` branch:
 
    .. code-block:: bash
 
-      mlogfilter --version
+      mlaunch --version
 
 
 Using the stable branch
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-#. To use the latest stable release of mtools, check out the master branch:
+#. To use the latest stable release of mlaunch, check out the main branch:
 
    .. code-block:: bash
 
-      git checkout master
+      git checkout main
 
 #. Confirm your current version with the ``--version`` parameter:
 
@@ -88,34 +88,34 @@ Using the stable branch
 Making pull requests
 ~~~~~~~~~~~~~~~~~~~~
 
-mtools uses a simplified version of the `git branching
+mlaunch uses a simplified version of the `git branching
 model <http://nvie.com/posts/a-successful-git-branching-model/>`__ by
 `@nvie <https://twitter.com/nvie>`__.
 
 .. important::
 
-   The `master branch <https://github.com/rueckstiess/mtools>`__ should only
+   The `main branch <https://github.com/rueckstiess/mtools>`__ should only
    ever contain versioned releases. **Do not send pull requests against the
-   master branch.**
+   main branch.**
 
 Development happens on the `develop branch
-<https://github.com/rueckstiess/mtools/tree/develop>`__.
+<https://github.com/mongodb/mlaunch/tree/develop>`__.
 
-#. Fork the `main repository <https://github.com/rueckstiess/mtools>`__
+#. Fork the `main repository <https://github.com/mongodb/mlaunch>`__
    into your own GitHub account.
 
 #. Clone a copy to your local machine:
 
    .. code-block:: bash
 
-      git clone https://github.com/<username>/mtools
+      git clone https://github.com/<username>/mlaunch
 
 #. Add the upstream repository to pull in the latest changes:
 
    .. code-block:: bash
 
-      cd mtools
-      git remote add upstream https://github.com/rueckstiess/mtools
+      cd mlaunch
+      git remote add upstream https://github.com/mongodb/mlaunch
       git fetch upstream
 
 #. Check out and track your remote ``develop`` branch with a local branch:
@@ -134,9 +134,9 @@ Development happens on the `develop branch
 
 #. Create a feature or bug fix branch that forks off the local ``develop``
    branch. The branch should named after the
-   `GitHub issue number <https://github.com/rueckstiess/mtools/issues/>`__
+   `GitHub issue number <https://github.com/mongodb/mlaunch/issues/>`__
    you are working on. If there isn't a GitHub issue yet, please
-   `create one <https://github.com/rueckstiess/mtools/issues/new>`__.
+   `create one <https://github.com/mongodb/mlaunch/issues/new>`__.
 
    .. code-block:: bash
 

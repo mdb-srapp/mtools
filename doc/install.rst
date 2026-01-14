@@ -5,9 +5,6 @@ Installation
 mlaunch is written in Python and it is currently tested with Python 3.8, 3.9,
 3.10, and 3.11.
 
-Some of the tools have additional dependencies, which are listed under the
-specific tool's section.
-
 mlaunch is only tested with
 `actively supported <https://www.mongodb.com/support-policy/lifecycles>`__
 (non End-of-Life) versions of the MongoDB server. As of November 2025,
@@ -25,7 +22,7 @@ Python
 Installation with pip3
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The easiest way to install mtools is via ``pip3``. From the command line, run:
+The easiest way to install mlaunch is via ``pip3``. From the command line, run:
 
 .. code-block:: bash
 
@@ -44,7 +41,7 @@ home directory.
 Installation from source
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-If ``pip3`` is not available and you want to install mtools from source, you can
+If ``pip3`` is not available and you want to install mlaunch from source, you can
 get the source code by cloning the `mlaunch github repository
 <https://github.com/mongodb/mlaunch>`__:
 
@@ -59,7 +56,7 @@ extract it with:
 
    tar xzvf mlaunch-<version>.tar.gz
 
-Then ``cd`` into the mtools directory and run:
+Then ``cd`` into the mlaunch directory and run:
 
 .. code-block:: bash
 

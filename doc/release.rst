@@ -2,8 +2,8 @@
 Releases
 ========
 
-The versioning standard in mtools is pretty straight-forward. It follows a
-major.minor.micro version system. We decided to start mtools at version 1.0.0
+The versioning standard in mlaunch is pretty straight-forward. It follows a
+major.minor.micro version system. We decided to start mlaunch at version 1.0.0
 as it was already pretty stable and usable at that stage.
 
 Bug fixes and minor feature additions are released periodically as part of
@@ -27,7 +27,7 @@ Releasing a new version
 
 #. Create a release branch, named ``release-x.y.z`` where ``x.y.z`` is the
    version to be released.
-#. Increase the version in ``./mtools/version.py`` from ``x.y.z-dev0`` to
+#. Increase the version in ``./mlaunch/util/version.py`` from ``x.y.z-dev0`` to
    ``x.y.z``.
 #. Make sure tests are passing in Python 3.6, 3.7, and 3.8 via
    ``tox -re py36,py37,py38``.
@@ -38,9 +38,9 @@ Releasing a new version
    to test it before releasing.
 #. Run ``python3 setup.py sdist bdist_wheel`` to build the dist packages.
 #. Run ``twine upload dist/*`` to publish the new version to PyPI (if you have
-   permissions, otherwise ask someone who does, e.g. @rueckstiess or @stennie).
-#. Merge the release branch into ``master``.
+   permissions, otherwise ask someone who does, e.g. @mdb-srapp).
+#. Merge the release branch into ``main``.
 #. Merge the release branch into ``develop``.
 #. Delete the ``release-x.y.z`` branch.
-#. Bump the version on the develop branch (in ``./mtools/version.py``) to
+#. Bump the version on the develop branch (in ``./mlaunch/util/version.py``) to
    ``x.y.(z+1)-dev0``.

@@ -4,7 +4,7 @@
 Testing
 =======
 
-mtools uses the following testing tools:
+mlaunch uses the following testing tools:
 
 -  `tox <https://tox.readthedocs.io/en/latest/>`__ for creating a standardized
    test environment
@@ -20,7 +20,7 @@ mtools uses the following testing tools:
 -  `pyenchant <http://pythonhosted.org/pyenchant/>`__ for documentation spell
    checking
 
-If you implement a new feature anywhere in mtools, please write a test
+If you implement a new feature anywhere in mlaunch, please write a test
 function or test class for the feature and document it. If you fix a bug,
 please re-run the test suite after the code change and make sure the tests
 still pass. Please think carefully before changing code and its related test
@@ -31,22 +31,11 @@ as fixed behavior.
 Prerequisites
 ~~~~~~~~~~~~~
 
-tox is required for testing mtools and building the documentation:
+tox is required for testing mlaunch and building the documentation:
 
 .. code::
 
    $ sudo pip3 install tox
-
-``mplotqueries`` uses the `matplotlib <https://matplotlib.org/>`__ library, which requires the
-`FreeType package <https://www.freetype.org/>`__. If you encounter an error that indicates the
-FreeType package is missing, install FreeType using your system package manager.
-
-For example, on Ubuntu run:
-
-.. code::
-
-   $ sudo apt-get install libfreetype6-dev libxft-dev
-
 
 Using tox
 ~~~~~~~~~
@@ -69,7 +58,7 @@ Configuration
 -------------
 
 tox configuration is controlled by the `tox.ini
-<https://github.com/rueckstiess/mtools/blob/develop/tox.ini>`__. It consists of
+<https://github.com/mongodb/mlaunch/blob/develop/tox.ini>`__. It consists of
 general tox settings, a series of testenvs that can be
 invoked individually (e.g. ``tox -e doc``), and configuration for
 certain tests.
@@ -215,7 +204,7 @@ when the package is fixed.
 Documentation builds
 ~~~~~~~~~~~~~~~~~~~~
 
-mtools documentation is written in `reStructuredText
+mlaunch documentation is written in `reStructuredText
 <http://www.sphinx-doc.org/en/stable/rest.html>`__ and built using `Sphinx
 <http://www.sphinx-doc.org/en/stable/index.html>`__.
 
